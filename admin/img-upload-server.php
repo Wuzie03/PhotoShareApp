@@ -2,15 +2,15 @@
 session_start();
 
 require_once('database.php');
-$db = $conn; //  Connection variable;
-$tableName = 'gallery'; // table Name;
+$db = $conn; //  database connection parameter;
+$tableName = 'gallery'; // gallery database table;
 $errors = array();
 $location = "";
 $title    = "";
 $caption    = "";
 
 
-// upload image on submit
+// upload all images once submitted
 if (isset($_POST['submit'])) {
    echo upload_image($tableName);
 }
