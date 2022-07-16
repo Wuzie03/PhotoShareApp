@@ -43,15 +43,7 @@
         <p> <a href="../index.php?logout='1'" style="color: red;">logout</a> </p>
     </form>
 
-    <!--  <form method="post" enctype="multipart/form-data">
-
-         <input type="file" name="image_gallery[]" multiple>
-         <input type="submit" value="Upload Image" name="submit">
-
-
-
-     </form>
--->
+    
 
 </body>
 
