@@ -1,18 +1,18 @@
 <?php
 session_start();
 
-// initialize application variables
+// initialize the main application variables
 $username = "";
 $email    = "";
 $role    = "";
 $errors = array();
 
-// connect to the database
+// connect to the database with credentials
 // pass database credentials
 
 $db = mysqli_connect('localhost', 'root', 'password2$', 'photosharingwebapp');
 
-// Register the User  
+// Register a User  on the platform  
 if (isset($_POST['reg_user'])) {
     // receive all input values from the form
     $username = mysqli_real_escape_string($db, $_POST['username']);
@@ -72,7 +72,8 @@ if (isset($_POST['reg_user'])) {
     }
 }
 
-// Login User here
+// Login the user here 
+// Check the user username and password and validate 
 if (isset($_POST['login_user'])) {
     $username = mysqli_real_escape_string($db, $_POST['username']);
     $password = mysqli_real_escape_string($db, $_POST['password']);
@@ -93,7 +94,7 @@ if (isset($_POST['login_user'])) {
         if (mysqli_num_rows($results) == 1) {
             $_SESSION['username'] = $username;
             $_SESSION['role'] = $role;
-            $_SESSION['success'] = "You are now logged in";
+            $_SESSION['success'] = "Login Successful";
 
             if ($role == "Admin") {
                 header('location: admin/uploadImage.php');
@@ -101,7 +102,8 @@ if (isset($_POST['login_user'])) {
                 header('location: index.php');
             }
         } else {
-            array_push($errors, "Wrong username/password combination");
+            //display generic error to user when incorrect username or password is entered
+            array_push($errors, "Invalid user credentials");
         }
     }
 }
